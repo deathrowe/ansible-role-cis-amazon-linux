@@ -3,6 +3,20 @@
 
 # 3.1.1 Ensure IP forwarding is disabled
 
+- name: 3.1.1 - Ensure IP forwarding is disabled
+  sysctl:
+    name: "{{ item }}"
+    value: 0
+    state: present
+  with_items:
+    - "net.ipv4.ip_forward"
+    - "net.ipv6.conf.all.forwarding"
+  tags:
+    - level-1
+    - section-3
+    - "3.1.1"
+    - scored
+
 - name: 3.1.1 - Ensure IP forwarding is disabled in active kernel parameters
   command: "{{ item }}"
   with_items:
