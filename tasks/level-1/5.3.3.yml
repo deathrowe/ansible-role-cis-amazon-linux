@@ -6,7 +6,7 @@
   pamd:
     name: system-auth
     type: password
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_control: sufficient
     module_arguments: 'remember=5'
@@ -21,7 +21,7 @@
   pamd:
     name: password-auth
     type: password
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_control: sufficient
     module_arguments: 'remember=5'
