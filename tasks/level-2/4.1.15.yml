@@ -23,9 +23,6 @@
     - '# 4.1.15 Ensure changes to system administration scope (sudoers) is collected'
     - '-w /etc/sudoers -p wa -k scope'
     - '-w /etc/sudoers.d -p wa -k scope'
-  when:
-    ("'-w /etc/sudoers -p wa -k scope' not in scope.stdout") or
-    ("'-w /etc/sudoers.d -p wa -k scope' not in scope.stdout")
   tags:
     - "4.1.15"
     - level-2
