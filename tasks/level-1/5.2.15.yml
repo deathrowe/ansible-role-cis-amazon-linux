@@ -3,20 +3,12 @@
 
 # 5.2.15 Ensure SSH access is limited
 
-- include: stat_sshd_config.yml
-  tags:
-    - level-1
-    - section-5
-    - "5.2.15"
-    - scored
-
 - name: 5.2.15 - Configure SSH AllowUsers
   lineinfile:
     regexp: "^#?AllowUsers\\s+"
     line: "AllowUsers {{ cis_sshd_allow_users }}"
     dest: "/etc/ssh/sshd_config"
   when:
-    - sshd_config.stat.exists
     - cis_sshd_allow_users is defined and cis_sshd_allow_users|trim != ""
   notify: Restart sshd
   tags:
@@ -31,7 +23,6 @@
     line: "AllowGroups {{ cis_sshd_allow_groups }}"
     dest: "/etc/ssh/sshd_config"
   when:
-    - sshd_config.stat.exists
     - cis_sshd_allow_groups is defined and cis_sshd_allow_groups|trim != ""
   notify: Restart sshd
   tags:
@@ -46,7 +37,6 @@
     line: "DenyUsers {{ cis_sshd_deny_users }}"
     dest: "/etc/ssh/sshd_config"
   when:
-    - sshd_config.stat.exists
     - cis_sshd_deny_users is defined and cis_sshd_deny_users|trim != ""
   notify: Restart sshd
   tags:
@@ -61,8 +51,18 @@
     line: "DenyGroups {{ cis_sshd_deny_groups }}"
     dest: "/etc/ssh/sshd_config"
   when:
-    - sshd_config.stat.exists
     - cis_sshd_deny_groups is defined and cis_sshd_deny_groups|trim != ""
+  notify: Restart sshd
+  tags:
+    - level-1
+    - section-5
+    - "5.2.15"
+    - scored
+
+- name: 5.2.15 - Configure SSH KexAlgorithms
+  lineinfile:
+    line: "KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256"
+    dest: "/etc/ssh/sshd_config"
   notify: Restart sshd
   tags:
     - level-1
