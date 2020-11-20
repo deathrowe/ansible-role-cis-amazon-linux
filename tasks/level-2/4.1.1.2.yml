@@ -20,8 +20,8 @@
     dest: "{{ cis_audit_auditd_filename }}"
     state: present
   with_items:
-    - { regexp: "space_left_action = SYSLOG", line: "space_left_action = email" }
-    - { regexp: "admin_space_left_action = SUSPEND", line: "admin_space_left_action = halt" }
+    - { regexp: "^space_left_action = SYSLOG", line: "space_left_action = email" }
+    - { regexp: "^admin_space_left_action = SUSPEND", line: "admin_space_left_action = halt" }
   notify: Restart auditd
   when: auditd_4_1_1_2.stat.exists is not defined or not auditd_4_1_1_2.stat.exists
   tags:
