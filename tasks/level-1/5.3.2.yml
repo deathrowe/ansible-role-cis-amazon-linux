@@ -7,10 +7,10 @@
   pamd:
     name: system-auth
     type: auth
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_type: auth
-    new_control: required
+    new_control: sufficient
     new_module_path: pam_faillock.so
     module_arguments: 'preauth
           audit
@@ -28,7 +28,7 @@
   pamd:
     name: system-auth
     type: auth
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_type: auth
     new_control: sufficient
@@ -48,7 +48,7 @@
   pamd:
     name: system-auth
     type: auth
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_type: auth
     new_control: "[default=die]"
@@ -68,7 +68,7 @@
   pamd:
     name: system-auth
     type: auth
-    control: sufficient
+    control: required
     module_path: pam_unix.so
     new_control: '[success=1 default=bad]'
     module_arguments: ''
