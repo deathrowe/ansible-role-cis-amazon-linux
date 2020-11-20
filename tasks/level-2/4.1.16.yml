@@ -22,8 +22,6 @@
   with_items:
     - '# 4.1.16 Ensure system administrator actions (sudolog) are collected'
     - '-w /var/log/sudo.log -p wa -k actions'
-  when:
-    ("'-w /var/log/sudo.log -p wa -k actions' not in scope.stdout")
   tags:
     - "4.1.16"
     - level-2
