@@ -11,10 +11,6 @@
     - level-1
     - "1.4.1"
     - scored
-    
-- name: 1.4.1 - debug
-  debug:
-    msg: "**** System has uuid {{ cis_grub_bootloader_filename }} ****"
 
 - name: 1.4.1 - Set permissions on grub configuration
   file:
