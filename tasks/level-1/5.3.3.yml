@@ -22,7 +22,7 @@
     name: password-auth
     type: password
     control: required
-    module_path: pam_unix.so
+    module_path: pam_pwhistory.so
     new_control: sufficient
     module_arguments: 'remember=5'
     state: updated
