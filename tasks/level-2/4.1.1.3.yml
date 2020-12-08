@@ -7,7 +7,7 @@
   lineinfile:
     regexp: "^max_log_file_action = ROTATE"
     line: "max_log_file_action = keep_logs"
-    dest: "{{ cis_audit_auditd_filename }}"
+    path: "{{ cis_audit_auditd_filename }}"
     state: present
   notify: Restart auditd
   tags:
