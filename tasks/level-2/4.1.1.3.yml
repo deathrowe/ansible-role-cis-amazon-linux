@@ -9,6 +9,7 @@
     line: "max_log_file_action = keep_logs"
     path: "{{ cis_audit_auditd_filename }}"
     state: present
+  notify: Restart auditd
   tags:
     - level-2
     - section-4
