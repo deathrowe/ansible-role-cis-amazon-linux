@@ -17,7 +17,7 @@
 - name: 4.1.2 Ensure auditd service is started (Scored)
   service:
     name: auditd
-    enabled: true
+    enabled: yes
     state: started
   tags:
     - level-2
