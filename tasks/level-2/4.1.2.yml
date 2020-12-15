@@ -9,10 +9,22 @@
   tags:
     - level-2
     - section-4
-    - "4.2.1.1"
+    - "4.1.2"
+    - scored
+    
+- name: 4.1.2 Ensure /sbin/audispd has correct permissions (Scored)
+  file:
+    path: /sbin/audispd
+    owner: root
+    group: root
+    mode: '0755'
+  tags:
+    - level-2
+    - section-4
+    - "4.1.2"
     - scored
 
-- name: 4.1.2 Ensure auditd service is enabled (Scored)
+- name: 4.1.2 Ensure auditd service is started (Scored)
   service:
     name: "auditd"
     enabled: true
@@ -23,5 +35,5 @@
   tags:
     - level-2
     - section-4
-    - "4.2.1.1"
+    - "4.1.2"
     - scored
