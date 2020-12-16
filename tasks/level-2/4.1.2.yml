@@ -13,7 +13,40 @@
     - section-4
     - "4.1.2"
     - scored
+    
+- name: 4.1.2 Audit log files must be owned by root
+  file:
+    dest: /var/log/audit
+    owner: root
+    recurse: true
+  tags:
+    - level-2
+    - section-4
+    - "4.1.2"
+    - scored
+    
+- name: 4.1.2 Recursively find /var/log/audit files
+  find:
+    paths: /var/log/audit
+    recurse: yes
+  register: files_matched
+  tags:
+    - level-2
+    - section-4
+    - "4.1.2"
+    - scored
 
+- name: 4.1.2 Audit log files must have mode 0640 or less
+  file:
+    path: "{{ item.path }}"
+    mode: "u-x,g-wx,o-rwx"
+  with_items: "{{ files_matched.files }}"
+  tags:
+    - level-2
+    - section-4
+    - "4.1.2"
+    - scored
+    
 - name: 4.1.2 Ensure auditd service is started (Scored)
   service:
     name: auditd
