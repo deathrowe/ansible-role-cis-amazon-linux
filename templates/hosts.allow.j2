@@ -1,1 +1,1 @@
-ALL: {% for iprange in rhel7cis_host_allow -%}{{ iprange }}{% if not loop.last %}, {% endif %}{% endfor %}
+ALL: {% for iprange in cis_hosts_allow_all_ips -%}{{ iprange }}{% if not loop.last %}, {% endif %}{% endfor %}
