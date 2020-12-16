@@ -17,8 +17,17 @@
   selinux:
     policy: targeted
     state: enforcing
+  register: selinux_status_change
+  changed_when: selinux_status_change is changed and ansible_selinux.status != 'disabled'
   tags:
       - level-1
       - section-1
       - "1.1.11"
       - scored
+
+- name: Relabel files on next boot if SELinux mode changed
+  file:
+    path: /.autorelabel
+    state: touch
+  when:
+    - ansible_selinux.status == 'enabled'
