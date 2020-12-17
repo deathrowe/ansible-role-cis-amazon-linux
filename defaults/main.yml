@@ -66,6 +66,10 @@ cis_hosts_allow_all_ips:
 firewall: firewalld
 #firewall: iptables
 
+motd_warning_banner: |
+    Authorized uses only. All activity may be monitored and reported.
+# End Banner
+
 # 3.6.5
 firewall_services:
   - ssh
