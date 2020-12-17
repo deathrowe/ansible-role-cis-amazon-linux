@@ -7,15 +7,10 @@
 # information is not disclosed, therefore the more appropriate option is to ensure that the scripts which
 # generate motd, and which are related to system information which would otherwise be
 # displayed by mingetty options, are not present.
-# On amazon linux, this is the 30-banner script within /etc/update-motd.d/
 - name: 1.7.1.1 - Ensure mingetty options are not used within motd
-  file:
-    path: '{{ item }}'
-    state: absent
-  loop:
-    - /etc/update-motd.d/30-banner
-    - /etc/update-motd.d/50-amazon-linux-extras-news
-    - /etc/update-motd.d/70-available-updates
+  template:
+      src: etc/motd.j2
+      dest: /etc/motd
   tags:
     - level-1
     - 1.7.1.1
