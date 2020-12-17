@@ -2,11 +2,31 @@
 ---
 
 # 3.6.2 Ensure default deny firewall policy
+- name: 3.6.2 - Ensure default deny firewall policy(DROP INPUT)
+  iptables:
+    chain: "{{item}}"
+    policy: DROP
+  become: yes
+  when:
+    - firewall == "iptables"
+  with_items:	
+    - INPUT	
+    - FORWARD	
+    - OUTPUT	
+  tags:	  tags:
+    - level-1
+    - section-3
+    - "3.6.2"
+    - scored
+    
+    
 - name: "3.6.2 - Ensure firewalld is installed and started"
   yum:
       name: firewalld
       state: present
   notify: restart firewalld
+  when:
+    - firewall == "firewalld"
   tags:
     - level-1
     - section-3
@@ -18,6 +38,8 @@
       name: firewalld
       state: started
       enabled: yes
+  when:
+    - firewall == "firewalld"
   tags:
     - level-1
     - section-3
@@ -29,6 +51,8 @@
       path: /etc/firewalld/firewalld.conf
       regexp: "^DefaultZone"
       line: "DefaultZone=drop"
+  when:
+    - firewall == "firewalld"
   tags:
     - level-1
     - section-3
@@ -40,6 +64,8 @@
       state: enabled
       zone: drop
       permanent: true
+  when:
+    - firewall == "firewalld"
   tags:
     - level-1
     - section-3
