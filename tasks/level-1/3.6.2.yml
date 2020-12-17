@@ -24,7 +24,6 @@
   yum:
       name: firewalld
       state: present
-  notify: restart firewalld
   when:
     - firewall == "firewalld"
   tags:
