@@ -18,4 +18,3 @@
   service:
       name: firewalld
       state: restarted
-      use: service
