@@ -11,6 +11,8 @@
     ctstate: ESTABLISHED,NEW
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -25,6 +27,8 @@
     ctstate: ESTABLISHED,NEW
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -39,6 +43,8 @@
     ctstate: ESTABLISHED,NEW
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -53,6 +59,8 @@
     ctstate: ESTABLISHED
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -67,6 +75,8 @@
     ctstate: ESTABLISHED
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -81,6 +91,8 @@
     ctstate: ESTABLISHED
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
