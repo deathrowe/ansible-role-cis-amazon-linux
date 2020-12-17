@@ -63,7 +63,7 @@ cis_hosts_allow_all_ips:
   - "172.16.0.0/255.240.0.0"
   - "192.168.0.0/255.255.0.0"
 
-# 3.6.2
+# 3.6.5
 firewall_services:
   - ssh
   - dhcpv6-client
