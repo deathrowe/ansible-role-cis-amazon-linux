@@ -13,3 +13,9 @@
 
 - name: Restart auditd
   service: name=auditd state=restarted use=service
+
+- name: restart firewalld
+  service:
+      name: firewalld
+      state: restarted
+      use: service
