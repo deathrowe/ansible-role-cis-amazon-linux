@@ -3,28 +3,17 @@
 
 # 3.6.5 Ensure firewall rules exist for all open ports
 
-- name: 3.6.5 - Ensure firewall rules exist for all open ports
-  debug:
-    msg: "WARNING - We are already checking this as part of security groups."
-  tags:
+- name: "3.6.5 - Ensure firewall rules exist for all open ports"
+  firewalld:
+      service: "{{ item }}"
+      state: enabled
+      zone: drop
+      permanent: true
+      immediate: true
+  notify: restart firewalld
+  with_items: "{{ firewall_services }}"
+  tags: 
     - level-1
     - section-3
-    - "3.6.5"
-    - not-scored
-    
-
-- name: 3.6.5 - Ensure firewall rules exist for accepting SSH connections
-  iptables:
-    chain: INPUT
-    protocol: tcp
-    destination_port: 22
-    ctstate: NEW
-    syn: match
-    jump: ACCEPT
-    comment: Accept new SSH connections.
-  become: yes
-  tags:
-    - level-1
-    - section-3
-    - "3.6.5"
-    - not-scored
+    - "3.6.2"
+    - scored
