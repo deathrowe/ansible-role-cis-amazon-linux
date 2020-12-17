@@ -62,6 +62,9 @@ cis_hosts_allow_all_ips:
   - "10.0.0.0/255.0.0.0"
   - "172.16.0.0/255.240.0.0"
   - "192.168.0.0/255.255.0.0"
+  
+firewall: firewalld
+#firewall: iptables
 
 # 3.6.5
 firewall_services:
