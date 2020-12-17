@@ -26,7 +26,6 @@
       state: enabled
       zone: drop
       permanent: true
-      immediate: true
   notify: restart firewalld
   with_items: "{{ firewall_services }}"
   when:
