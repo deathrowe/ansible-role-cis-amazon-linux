@@ -63,6 +63,11 @@ cis_hosts_allow_all_ips:
   - "172.16.0.0/255.240.0.0"
   - "192.168.0.0/255.255.0.0"
 
+# 3.6.2
+firewall_services:
+  - ssh
+  - dhcpv6-client
+
 # 4.2.3
 # You should only enable either rsyslog or syslog-ng, but not both.
 cis_enable_rsyslog: true # Set to true if rsyslog should be enabled/configured.
