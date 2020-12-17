@@ -9,6 +9,8 @@
     in_interface: "lo"
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -21,6 +23,8 @@
     out_interface: "lo"
     jump: ACCEPT
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -33,6 +37,8 @@
     source: 127.0.0.0/8
     jump: DROP
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
