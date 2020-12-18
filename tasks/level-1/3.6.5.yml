@@ -2,7 +2,7 @@
 ---
 
 # 3.6.5 Ensure firewall rules exist for all open ports
-- name: 3.6.5 - Ensure firewall rules exist for accepting SSH connections	
+- name: 3.6.5 - Ensure firewall rules exist for accepting SSH connections
   iptables:	
     chain: INPUT	
     protocol: tcp	
