@@ -3,21 +3,21 @@
 
 # 3.6.5 Ensure firewall rules exist for all open ports
 - name: 3.6.5 - Ensure firewall rules exist for accepting SSH connections
-  iptables:	
-    chain: INPUT	
-    protocol: tcp	
-    destination_port: 22	
-    ctstate: NEW	
-    syn: match	
-    jump: ACCEPT	
-    comment: Accept new SSH connections.	
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    ctstate: NEW
+    syn: match
+    jump: ACCEPT
+    comment: Accept new SSH connections.
   become: yes
   when:
     - firewall == "iptables"
-  tags:	
-    - level-1	
-    - section-3	
-    - "3.6.5"	
+  tags:
+    - level-1
+    - section-3
+    - "3.6.5"
     - not-scored
 
 - name: "3.6.5 - Ensure firewall rules exist for all open ports"
@@ -30,7 +30,7 @@
   with_items: "{{ firewall_services }}"
   when:
     - firewall == "firewalld"
-  tags: 
+  tags:
     - level-1
     - section-3
     - "3.6.2"
