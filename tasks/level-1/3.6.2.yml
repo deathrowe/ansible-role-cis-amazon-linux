@@ -22,8 +22,8 @@
     
 - name: "3.6.2 - Ensure firewalld is installed and started"
   yum:
-      name: firewalld
-      state: present
+    name: firewalld
+    state: present
   when:
     - firewall == "firewalld"
   tags:
@@ -34,9 +34,9 @@
 
 - name: "3.6.2 - Ensure firewalld is installed and started"
   service:
-      name: firewalld
-      enabled: yes
-      state: started
+    name: firewalld
+    enabled: yes
+    state: started
   when:
     - firewall == "firewalld"
   tags:
@@ -47,9 +47,9 @@
 
 - name: "3.6.2 - Ensure default deny firewall policy"
   lineinfile:
-      path: /etc/firewalld/firewalld.conf
-      regexp: "^DefaultZone"
-      line: "DefaultZone=drop"
+    path: /etc/firewalld/firewalld.conf
+    regexp: "^DefaultZone"
+    line: "DefaultZone=drop"
   when:
     - firewall == "firewalld"
   tags:
@@ -60,9 +60,9 @@
 
 - name: "3.6.2 - Ensure default deny firewall policy"
   firewalld:
-      state: enabled
-      zone: drop
-      permanent: true
+    state: enabled
+    zone: drop
+    permanent: true
   when:
     - firewall == "firewalld"
   tags:
