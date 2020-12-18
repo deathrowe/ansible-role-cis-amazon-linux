@@ -9,7 +9,7 @@
   become: yes
   when:
     - firewall == "iptables"
-  with_items:	
+  with_items:
     - INPUT	
     - FORWARD	
     - OUTPUT	
