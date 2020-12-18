@@ -10,6 +10,8 @@
     jump: ACCEPT
     ip_version: ipv4
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -23,6 +25,8 @@
     jump: ACCEPT
     ip_version: ipv4
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
@@ -36,6 +40,8 @@
     jump: DROP
     ip_version: ipv4
   become: yes
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
