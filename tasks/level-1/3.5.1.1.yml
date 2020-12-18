@@ -13,6 +13,8 @@
     - INPUT
     - FORWARD
     - OUTPUT
+  when:
+    - firewall == "iptables"
   tags:
     - level-1
     - section-3
