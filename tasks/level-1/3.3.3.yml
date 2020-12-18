@@ -35,3 +35,17 @@
     - section-3
     - "3.3.3"
     - scored
+    
+- name: 3.3.3 - Ensure IPv6 is disabled
+  lineinfile:
+    dest: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX=.*(?!.*ipv6\.disable=1)\"[^\"]+)(\".*)'
+    line: '\1 ipv6.disable=1\2'
+    backrefs: yes
+  notify:
+    - grub2cfg
+  tags:
+    - level-1
+    - section-3
+    - "3.3.3"
+    - scored
