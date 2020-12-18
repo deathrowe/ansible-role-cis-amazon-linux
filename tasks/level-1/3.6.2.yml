@@ -35,8 +35,8 @@
 - name: "3.6.2 - Ensure firewalld is installed and started"
   service:
       name: firewalld
+      enabled: yes
       state: started
-      enabled: true
   when:
     - firewall == "firewalld"
   tags:
