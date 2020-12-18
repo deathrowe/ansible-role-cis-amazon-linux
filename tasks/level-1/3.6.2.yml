@@ -38,6 +38,10 @@
     state: started
   when:
     - firewall == "firewalld"
+  register: firewalldService
+  until: firewalldService.status.ActiveState == "active"
+  retries: 15
+  delay: 20
   tags:
     - level-1
     - section-3
