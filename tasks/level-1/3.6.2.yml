@@ -18,6 +18,11 @@
     - section-3
     - "3.6.2"
     - scored
+
+- name: Add the nf_conntrack module
+  modprobe:
+    name: nf_conntrack
+    state: present
     
 - name: "3.6.2 - Ensure firewalld is installed and started"
   yum:
