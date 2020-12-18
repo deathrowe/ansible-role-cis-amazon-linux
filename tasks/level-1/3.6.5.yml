@@ -22,10 +22,10 @@
 
 - name: "3.6.5 - Ensure firewall rules exist for all open ports"
   firewalld:
-      service: "{{ item }}"
-      state: enabled
-      zone: drop
-      permanent: true
+    service: "{{ item }}"
+    state: enabled
+    zone: drop
+    permanent: true
   notify: restart firewalld
   with_items: "{{ firewall_services }}"
   when:
