@@ -24,6 +24,9 @@
     name: nf_conntrack
     state: present
     
+- name: Make Makefile-like dependency file
+  command: depmod
+    
 - name: "3.6.2 - Ensure firewalld is installed and started"
   yum:
     name: firewalld
