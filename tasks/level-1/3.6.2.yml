@@ -19,9 +19,9 @@
     - "3.6.2"
     - scored
 
-- name: Add the ip_conntrack module
+- name: Add the nf_conntrack module
   modprobe:
-    name: ip_conntrack
+    name: nf_conntrack
     state: present
     
 - name: Make Makefile-like dependency file
