@@ -1,0 +1,12 @@
+---
+
+- name: "1.1.7 - Ensure separate partition exists for /var/tmp"
+  shell: mount | grep "on /var/tmp "
+  register: var_tmp_mounted
+  changed_when: no
+  failed_when: no
+  tags:
+    - level-1
+    - section-1
+    - "1.1.7"
+    - scored
