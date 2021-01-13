@@ -18,5 +18,5 @@
   command: firewall-cmd --reload
 
 - name: grub2cfg
-  command: /sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
   ignore_errors: True
