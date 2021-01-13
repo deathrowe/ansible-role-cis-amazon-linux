@@ -1,0 +1,11 @@
+- name: "3.6 - Ensure IPv6 is disabled"
+  lineinfile:
+      path: /etc/default/grub
+      regexp: '^(GRUB_CMDLINE_LINUX=.*(?!.*ipv6\.disable=1)\"[^\"]+)(\".*)'
+      line: '\1 ipv6.disable=1\2'
+  notify:
+      - grub2cfg
+  tags:
+      - level1
+      - patch
+      - rule_3.6
