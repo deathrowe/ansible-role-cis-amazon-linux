@@ -3,9 +3,22 @@
 
 # 5.4.4 Ensure default user umask is 027 or more restrictive
 
-- name: 5.4.4 - Ensure default user umask is 027 or more restrictive
-  shell: sed -i -e "s/umask 027/umask {{ cis_umask_default }}/g"  {{ item }}
-  with_items: "{{ cis_umask_shell_files }}"
+- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/bashrc"
+  replace:
+    path: /etc/bashrc
+    regexp: '(^\s+umask) 002'
+    replace: '\1 027'
+  tags:
+    - level-1
+    - section-5
+    - "5.4.4"
+    - scored
+
+- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile"
+  replace:
+    path: /etc/profile
+    regexp: '(^\s+umask) 002'
+    replace: '\1 027'
   tags:
     - level-1
     - section-5
