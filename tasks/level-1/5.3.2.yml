@@ -7,16 +7,17 @@
   pamd:
     name: system-auth
     type: auth
-    control: required
+    control: sufficient
     module_path: pam_unix.so
     new_type: auth
-    new_control: sufficient
+    new_control: required
     new_module_path: pam_faillock.so
-    module_arguments: 'preauth
-          audit
-          silent
-          deny=5
-          unlock_time=900'
+    module_arguments:
+      - preauth
+      - audit
+      - silent
+      - deny=5
+      - "unlock_time={{ failed_password_attempt_lockout_time }}"
     state: before
   tags:
     - level-1
@@ -28,15 +29,16 @@
   pamd:
     name: system-auth
     type: auth
-    control: required
+    control: sufficient
     module_path: pam_unix.so
     new_type: auth
     new_control: sufficient
     new_module_path: pam_faillock.so
-    module_arguments: 'authsucc
-          audit
-          deny=5
-          unlock_time=900'
+    module_arguments:
+      - authsucc
+      - audit
+      - deny=5
+      - "unlock_time={{ failed_password_attempt_lockout_time }}"
     state: after
   tags:
     - level-1
@@ -48,15 +50,16 @@
   pamd:
     name: system-auth
     type: auth
-    control: required
+    control: sufficient
     module_path: pam_unix.so
     new_type: auth
     new_control: "[default=die]"
     new_module_path: pam_faillock.so
-    module_arguments: 'authfail
-          audit
-          deny=5
-          unlock_time=900'
+    module_arguments:
+      - authfail
+      - audit
+      - deny=5
+      - "unlock_time={{ failed_password_attempt_lockout_time }}"
     state: after
   tags:
     - level-1
@@ -68,7 +71,7 @@
   pamd:
     name: system-auth
     type: auth
-    control: required
+    control: sufficient
     module_path: pam_unix.so
     new_control: '[success=1 default=bad]'
     module_arguments: ''
