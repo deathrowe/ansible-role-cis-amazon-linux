@@ -40,7 +40,7 @@ cis_aide_database_filename: "/var/lib/aide/aide.db.gz"
 cis_aide_src_database_filename: "/var/lib/aide/aide.db.new.gz"
 
 # 1.3.2
-cis_aide_cron_user: "root"
+cis_aide_cron_user: "ec2-user"
 cis_aide_cron_job: "/usr/sbin/aide --check"
 cis_aide_cron_minute: 0
 cis_aide_cron_hour: 5
@@ -130,7 +130,6 @@ cis_pass_inactive_lock: 30
 
 # 5.4.2
 cis_skip_lock_users:
-  - root
   - ec2-user
   - halt
   - shutdown
@@ -144,5 +143,4 @@ cis_umask_shell_files:
 
 # 5.5
 cis_wheel_group_members:
-  - root
   - ec2-user
