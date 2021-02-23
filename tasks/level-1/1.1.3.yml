@@ -10,7 +10,6 @@
     fstype: "{{ item.fstype }}"
     src: "{{ item.device }}"
     opts: "{{ item.opts.split(',') | union(['nodev']) | join(',') }}"
-  when: item.mountpoint == '/tmp'
   with_items:
     - "{{ fs_mounts | selectattr('mountpoint', 'equalto', '/tmp') | list }}"
   tags:
