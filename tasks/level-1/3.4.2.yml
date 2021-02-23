@@ -1,17 +1,37 @@
 # Standards: 0.11
 ---
 
-# 3.4.2 Ensure /etc/hosts.allow is configured
+# 3.4.2 - Ensure SCTP is disabled
 
-- name: 3.4.2 - Ensure /etc/hosts.allow is configured
-  template:
-      src: hosts.allow.j2
-      dest: /etc/hosts.allow
-      owner: root
-      group: root
-      mode: 0644
+- name: 3.4.2 - Check if CIS modprobe configuration file exists
+  stat:
+    path: "{{ cis_modprobe_conf_filename }}"
+  register: modprobe_3_4_2
   tags:
     - level-1
     - section-3
     - "3.4.2"
-    - scored
+    - not-scored
+
+- name: 3.4.2 - Ensure SCTP is disabled
+  copy:
+    dest: "{{ cis_modprobe_conf_filename }}"
+    content: "install sctp /bin/true\n"
+  when: modprobe_3_4_2.stat.exists is not defined or not modprobe_3_4_2.stat.exists
+  tags:
+    - level-1
+    - section-3
+    - "3.4.2"
+    - not-scored
+
+- name: 3.4.2 - Ensure SCTP is disabled
+  lineinfile:
+    dest: "{{ cis_modprobe_conf_filename }}"
+    regexp: "^install sctp\\s+"
+    line: "install sctp /bin/true"
+  when: modprobe_3_4_2.stat.exists is defined and modprobe_3_4_2.stat.exists
+  tags:
+    - level-1
+    - section-3
+    - "3.4.2"
+    - not-scored
