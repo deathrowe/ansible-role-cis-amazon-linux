@@ -10,8 +10,7 @@
   with_items:
     - "{{ fs_mounts | selectattr('mountpoint', 'equalto', '/var/tmp') | list }}"
   tags:
-      - level-1
-      - section-1
-      - "1.1.7"
-      - scored
+    - level-1
+    - section-1
+    - "1.1.7"
     - scored
