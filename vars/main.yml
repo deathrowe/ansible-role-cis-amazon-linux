@@ -19,5 +19,6 @@ cis_sysconfig_init_filename: "/etc/sysconfig/init"
 cis_security_limits_filename: "/etc/security/limits.conf"
 cis_audit_auditd_filename:  "/etc/audit/auditd.conf"
 cis_audit_rules_filename: "/etc/audit/rules.d/audit.rules"
+cis_sshd_config_filename: "/etc/ssh/sshd_config"
 
 full_upgrade: True
