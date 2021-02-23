@@ -1,11 +1,11 @@
 # Standards: 0.11
 ---
 
-# 2.1.9 Ensure tftp server is not enabled
+# 2.1.9 Ensure FTP server is not enabled
 
-- name: 2.1.9 - Ensure tftp server is not enabled
+- name: 2.1.9 - Ensure FTP server is not enabled
   service:
-    name: "tftp"
+    name: "vsftpd"
     enabled: false
     state: stopped
   ignore_errors: true
