@@ -131,6 +131,7 @@ cis_pass_inactive_lock: 30
 # 5.4.2
 cis_skip_lock_users:
   - root
+  - ec2-user
   - halt
   - shutdown
   - sync
@@ -142,4 +143,6 @@ cis_umask_shell_files:
   - /etc/profile
 
 # 5.5
-cis_wheel_group_members: "root"
+cis_wheel_group_members:
+  - root
+  - ec2-user
