@@ -6,8 +6,8 @@
 - name: 5.1.3 - Ensure permissions on /etc/cron.hourly are configured
   file:
     path: "/etc/cron.hourly"
-    owner: ec2-user
-    group: ec2-user
+    owner: root
+    group: root
     mode: 0700
   tags:
     - level-1
