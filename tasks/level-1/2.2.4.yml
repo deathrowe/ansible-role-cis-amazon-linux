@@ -1,14 +1,12 @@
 # Standards: 0.11
 ---
 
-# 2.2.4 Ensure CUPS is not enabled
+# 2.2.4 Ensure telnet is not enabled
 
-- name: 2.2.4 - Ensure CUPS is not enabled
-  service:
-    name: "cups"
-    enabled: false
-    state: stopped
-  ignore_errors: true
+- name: 2.2.4 - Ensure telnet is not enabled
+  yum:
+    name: "telnet"
+    state: absent
   tags:
     - level-1
     - "2.2.4"
