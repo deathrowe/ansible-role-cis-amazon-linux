@@ -6,8 +6,8 @@
 - name: 5.1.4 - Ensure permissions on /etc/cron.daily are configured
   file:
     path: "/etc/cron.daily"
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 0700
   tags:
     - level-1
