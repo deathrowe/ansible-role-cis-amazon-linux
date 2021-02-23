@@ -6,8 +6,8 @@
 - name: 5.1.7 - Ensure permissions on /etc/cron.d are configured
   file:
     path: "/etc/cron.d"
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 0700
     state: directory
   tags:
