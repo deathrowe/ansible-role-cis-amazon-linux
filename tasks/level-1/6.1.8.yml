@@ -6,9 +6,9 @@
 - name: 6.1.8 - Ensure permissions on /etc/group- are configured
   file:
     path: /etc/group-
-    owner: ec2-user
-    group: ec2-user
-    mode: 0600
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - level-1
     - section-6
