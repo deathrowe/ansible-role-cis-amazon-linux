@@ -6,8 +6,8 @@
 - name: 5.1.6 - Ensure permissions on /etc/cron.monthly are configured
   file:
     path: "/etc/cron.monthly"
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 0700
   tags:
     - level-1
