@@ -6,8 +6,8 @@
 - name: 5.1.2 - Ensure permissions on /etc/crontab are configured
   file:
     path: "/etc/crontab"
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 0600
   tags:
     - level-1
