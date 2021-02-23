@@ -1,12 +1,17 @@
 ---
 
 - name: "1.1.7 - Ensure separate partition exists for /var/tmp"
-  shell: mount | grep "on /var/tmp "
-  register: var_tmp_mounted
-  changed_when: no
-  failed_when: no
+  mount:
+    name: "{{ item.mountpoint }}"
+    state: present
+    fstype: "{{item.fstype}}"
+    src: "{{item.device}}"
+    opts: "{{item.opts}}"
+  with_items:
+    - "{{ fs_mounts | selectattr('mountpoint', 'equalto', '/var/tmp') | list }}"
   tags:
-    - level-1
-    - section-1
-    - "1.1.7"
+      - level-1
+      - section-1
+      - "1.1.7"
+      - scored
     - scored
