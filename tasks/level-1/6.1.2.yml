@@ -6,8 +6,8 @@
 - name: 6.1.2 - Ensure permissions on /etc/passwd are configured
   file:
     path: /etc/passwd
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 0644
   tags:
     - level-1
