@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for dir in `cat /etc/passwd | egrep -v '(root|ec2-user|halt|sync|shutdown)' | awk -F: '($7 != "/sbin/nologin") { print $6 }'`; do
+for dir in `cat /etc/passwd | egrep -v '(root|halt|sync|shutdown)' | awk -F: '($7 != "/sbin/nologin") { print $6 }'`; do
   dirperm=`ls -ld $dir | cut -f1 -d" "`
   if [ `echo $dirperm | cut -c6 ` != "-" ]; then
     echo "Group Write permission set on directory $dir"
