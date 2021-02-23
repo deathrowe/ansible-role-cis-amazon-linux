@@ -25,7 +25,7 @@ while [ "$1" != "" ]; do
      echo "Other Write permission set on directory $1"
    fi
    dirown=`ls -ldH $1 | awk '{print $3}'`
-   if [ "$dirown" != "root" ] || [ "$dirown" != "ec2-user" ] ; then
+   if [ "$dirown" != "root" ] ; then
      echo $1 is not owned by root
    fi
  else
