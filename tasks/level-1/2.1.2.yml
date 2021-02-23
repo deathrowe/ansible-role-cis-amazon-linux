@@ -5,7 +5,7 @@
 
 - name: 2.1.2 - Ensure daytime services are not enabled
   yum:
-    name: "xorg-x11*
+    name: "xorg-x11*"
     state: absent
   tags:
     - level-1
