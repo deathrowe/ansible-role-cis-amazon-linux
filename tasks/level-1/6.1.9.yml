@@ -6,8 +6,8 @@
 - name: 6.1.9 - Ensure permissions on /etc/gshadow- are configured
   file:
     path: /etc/gshadow-
-    owner: root
-    group: root
+    owner: ec2-user
+    group: ec2-user
     mode: 000
   tags:
     - level-1
