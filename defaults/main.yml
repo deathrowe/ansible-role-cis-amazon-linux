@@ -159,7 +159,9 @@ cis_umask_shell_files:
   - /etc/bashrc
   - /etc/profile
 cis_umask_shell_additional_files_directory:
-- /etc/profile.d
+  - /etc/profile.d
+
+cis_user_shell_timeout: 600
 
 # 5.5
 cis_wheel_group_members:
