@@ -62,7 +62,7 @@ cis_enable_ntp: false # Set to true if ntp should be enabled/configured.
 cis_enable_chrony: true # Set to true if chrony should be enabled/configured.
 
 # 3.3.2
-cis_hosts_allow_all_ips:
+cis_hosts_allowed_ip_range:
   - "0.0.0.0/0"
   
 # firewall: firewalld
