@@ -56,26 +56,12 @@ cis_local_login_warning_banner: "Authorized uses only. All activity may be monit
 # 1.7.1.3
 cis_remote_login_warning_banner: "Authorized uses only. All activity may be monitored and reported.\n"
 
-fs_mounts:
-  - mountpoint: '/tmp'
-    device: 'tmpfs'
-    fstype: 'tmpfs'
-    opts: 'rw,nosuid,nodev,noexec,relatime'
-  - mountpoint: '/var/tmp'
-    device: 'tmpfs'
-    fstype: 'tmpfs'
-    opts: 'rw,nosuid,nodev,noexec,relatime'
-  - mountpoint: '/dev/shm'
-    device: 'tmpfs'
-    fstype: 'tmpfs'
-    opts: 'rw,nosuid,nodev,noexec,relatime'
-
 # 2.2.1.1
 # You should only enable either ntp or chrony, but not both.
 cis_enable_ntp: false # Set to true if ntp should be enabled/configured.
 cis_enable_chrony: true # Set to true if chrony should be enabled/configured.
 
-# 3.4.2
+# 3.3.2
 cis_hosts_allow_all_ips:
   - "0.0.0.0/0"
   
