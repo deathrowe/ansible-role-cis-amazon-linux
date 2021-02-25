@@ -4,7 +4,7 @@
 # 5.2.2 - Ensure permissions on SSH private host key files are configured
 
 - name: 5.2.2 - Ensure permissions on SSH private host key files are configured
-  command: find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chown root:root {} \;
+  command: find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chown root:ssh_keys {} \;
   tags:
     - level-1
     - section-5
