@@ -18,3 +18,43 @@
     - section-5
     - "5.2.2"
     - scored
+
+- name: 5.2.2 - Ensure root owner on home
+  command: sudo chown root:root /home
+  tags:
+    - level-1
+    - section-5
+    - "5.2.2"
+    - scored
+  
+- name: 5.2.2 - Ensure correct permissions on home
+  command: sudo chmod 755 /home
+  tags:
+    - level-1
+    - section-5
+    - "5.2.2"
+    - scored
+
+- name: 5.2.2 - Ensure ec2-user owner on ec2-user dir
+  command: sudo chown ec2-user:ec2-user /home/ec2-user -R
+  tags:
+    - level-1
+    - section-5
+    - "5.2.2"
+    - scored
+
+- name: 5.2.2 - Ensure correct permissions on ec2-user ssh dir
+  command: sudo chmod 700 /home/ec2-user /home/ec2-user/.ssh
+  tags:
+    - level-1
+    - section-5
+    - "5.2.2"
+    - scored
+
+- name: 5.2.2 - Ensure correct permission on authorized_keys dir
+  command: sudo chmod 600 /home/ec2-user/.ssh/authorized_keys
+  tags:
+    - level-1
+    - section-5
+    - "5.2.2"
+    - scored
