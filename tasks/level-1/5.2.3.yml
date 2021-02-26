@@ -18,3 +18,55 @@
     - section-5
     - "5.2.3"
     - scored
+    
+- name: 5.2.3 - Create new dir for authorized_keys dir
+  command: mkdir /etc/ssh/ec2-user
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+
+- name: 5.2.3 - copy authorized_keys dir from original location to new dir
+  command: cp /home/ec2-user/.ssh/authorized_keys /etc/ssh/ec2-user/
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+    
+- name: 5.2.3 - Ensure owner of new ssh ec2-user dir is ec2-user
+  command: chown -R ec2-user:ec2-user /etc/ssh/ec2-user
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+    
+- name: 5.2.3 - Ensure permissions on SSH ec2-user dir are configured
+  command: chmod 755 /etc/ssh/ec2-user
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+    
+- name: 5.2.3 - Ensure permissions on new SSH authorized_keys dir are configured
+  command: chmod 644 /etc/ssh/ec2-user/authorized_keys
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+    
+- name: 5.2.3 - Ensure SSH AuthorizedKeysFile is set to new dir
+  lineinfile:
+    regexp: "^AuthorizedKeysFile\\s+"
+    line: "AuthorizedKeysFile /etc/ssh/ec2-user/authorized_keys"
+    dest: "{{ cis_sshd_config_filename }}"
+  notify: "Restart sshd"
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
