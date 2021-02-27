@@ -51,6 +51,15 @@
     - "5.2.3"
     - scored
     
+- name: 5.2.3 - Copy SSH public file to server
+  authorized_key: user=ec2-user
+                  key="{{ lookup('file', ssh_public_key)}}"
+  tags:
+    - level-1
+    - section-5
+    - "5.2.3"
+    - scored
+    
 - name: 5.2.3 - Ensure permissions on new SSH authorized_keys dir are configured
   command: chmod 644 /etc/ssh/ec2-user/authorized_keys
   tags:
@@ -70,3 +79,4 @@
     - section-5
     - "5.2.3"
     - scored
+    
