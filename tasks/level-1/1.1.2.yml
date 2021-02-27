@@ -6,7 +6,7 @@
 - name: 1.1.2 - Ensure separate partition exists for /tmp (Scored)
   mount:
     name: "{{ item.mountpoint }}"
-    state: mounted
+    state: present
     fstype: "{{item.fstype}}"
     src: "{{item.device}}"
     opts: "{{item.opts}}"
